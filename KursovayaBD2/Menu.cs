@@ -90,6 +90,13 @@ namespace KursovayaBD2
             string sql = $"DELETE FROM Преподаватели WHERE ФИО = '{comboBox1.SelectedItem.ToString()}';";
             SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
+            int currentIndex = comboBox1.SelectedIndex;
+            comboBox1.Items.RemoveAt(currentIndex);
+            comboBox1.SelectedIndex = -1;
+
+
+            //dateTimePicker1.Value (Издательство)
         }
+
     }
 }
