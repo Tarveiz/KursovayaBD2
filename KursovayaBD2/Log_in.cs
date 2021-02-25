@@ -12,10 +12,20 @@ using System.Data.Common;
 
 namespace KursovayaBD2
 {
-
-    public partial class Form1 : Form
+    class J 
     {
-        public Form1()
+        public J(int B)
+        {
+             A = B;
+        }
+        public int A = 10;
+
+    
+    };
+    
+    public partial class Log_in : Form
+    {
+        public Log_in()
         {
             InitializeComponent();
         }
@@ -53,19 +63,24 @@ namespace KursovayaBD2
                     Console.WriteLine("Connection successful!");
 
 
+                    J Object = new J(67);
+                    Object.A = Object.A + 10;
+                    Console.WriteLine(Object.A);
 
-                    Form2 form2 = new Form2();
-                    form2.Show();
-                    //if (login.Text.Equals("Tarveiz") && password.Text.Equals("1234"))
-                    //{
-                    //    Form1 form1 = new Form1(conn);
-                    //    form1.Show();
-                    //}
+                    if (login.Text.Equals("Tarveiz") && password.Text.Equals("1234"))
+                    {
+                        Menu menu = new Menu(conn);
+                        menu.Show();
+                    }
                     //else
                     //{
                     //    Form2 form2 = new Form2(conn);
                     //    form2.Show();
                     //}
+
+
+
+
                     this.Hide();
                 }
                 catch (Exception ex)

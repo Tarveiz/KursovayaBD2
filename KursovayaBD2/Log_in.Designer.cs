@@ -1,6 +1,6 @@
 ﻿namespace KursovayaBD2
 {
-    partial class Form1
+    partial class Log_in
     {
         /// <summary>
         /// Обязательная переменная конструктора.
