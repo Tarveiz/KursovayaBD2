@@ -12,16 +12,7 @@ using System.Data.Common;
 
 namespace KursovayaBD2
 {
-    class J 
-    {
-        public J(int B)
-        {
-             A = B;
-        }
-        public int A = 10;
-
-    
-    };
+   
     
     public partial class Log_in : Form
     {
@@ -62,10 +53,6 @@ namespace KursovayaBD2
 
                     Console.WriteLine("Connection successful!");
 
-
-                    J Object = new J(67);
-                    Object.A = Object.A + 10;
-                    Console.WriteLine(Object.A);
 
                     if (login.Text.Equals("Tarveiz") && password.Text.Equals("1234"))
                     {
