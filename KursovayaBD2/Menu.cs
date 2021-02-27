@@ -68,12 +68,14 @@ namespace KursovayaBD2
                         if (reader.HasRows)
                         {
                             comboBox1.Items.Clear();
+                            comboBox2.Items.Clear();
                             while (reader.Read())
                             {
                                 int nameIndex = reader.GetOrdinal("ФИО");
                                 string name = reader.GetString(nameIndex);
 
                                 comboBox1.Items.Add(name);
+                                comboBox2.Items.Add(name);
                             }
                         }
                     }
@@ -98,5 +100,9 @@ namespace KursovayaBD2
             //dateTimePicker1.Value (Издательство)
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
