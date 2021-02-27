@@ -60,9 +60,9 @@
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.Public1 = new System.Windows.Forms.CheckBox();
+            this.FIO1 = new System.Windows.Forms.TextBox();
+            this.Kont1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
@@ -217,9 +217,9 @@
             // 
             this.tabPage9.Controls.Add(this.label4);
             this.tabPage9.Controls.Add(this.label1);
-            this.tabPage9.Controls.Add(this.textBox2);
-            this.tabPage9.Controls.Add(this.textBox1);
-            this.tabPage9.Controls.Add(this.checkBox1);
+            this.tabPage9.Controls.Add(this.Kont1);
+            this.tabPage9.Controls.Add(this.FIO1);
+            this.tabPage9.Controls.Add(this.Public1);
             this.tabPage9.Controls.Add(this.button3);
             this.tabPage9.Controls.Add(this.comboBox2);
             this.tabPage9.Location = new System.Drawing.Point(4, 22);
@@ -407,29 +407,29 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // checkBox1
+            // Public1
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(290, 197);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(87, 17);
-            this.checkBox1.TabIndex = 11;
-            this.checkBox1.Text = "Публикации";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.Public1.AutoSize = true;
+            this.Public1.Location = new System.Drawing.Point(290, 197);
+            this.Public1.Name = "Public1";
+            this.Public1.Size = new System.Drawing.Size(87, 17);
+            this.Public1.TabIndex = 11;
+            this.Public1.Text = "Публикации";
+            this.Public1.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // FIO1
             // 
-            this.textBox1.Location = new System.Drawing.Point(290, 73);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(122, 20);
-            this.textBox1.TabIndex = 12;
+            this.FIO1.Location = new System.Drawing.Point(290, 73);
+            this.FIO1.Name = "FIO1";
+            this.FIO1.Size = new System.Drawing.Size(122, 20);
+            this.FIO1.TabIndex = 12;
             // 
-            // textBox2
+            // Kont1
             // 
-            this.textBox2.Location = new System.Drawing.Point(290, 137);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(122, 20);
-            this.textBox2.TabIndex = 13;
+            this.Kont1.Location = new System.Drawing.Point(290, 137);
+            this.Kont1.Name = "Kont1";
+            this.Kont1.Size = new System.Drawing.Size(122, 20);
+            this.Kont1.TabIndex = 13;
             // 
             // label1
             // 
@@ -511,9 +511,9 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TextBox Kont1;
+        private System.Windows.Forms.TextBox FIO1;
+        private System.Windows.Forms.CheckBox Public1;
         private System.Windows.Forms.Button button3;
     }
 }
