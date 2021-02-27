@@ -410,7 +410,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(342, 212);
+            this.checkBox1.Location = new System.Drawing.Point(290, 197);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(87, 17);
             this.checkBox1.TabIndex = 11;
@@ -419,14 +419,14 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(342, 88);
+            this.textBox1.Location = new System.Drawing.Point(290, 73);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(122, 20);
             this.textBox1.TabIndex = 12;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(342, 152);
+            this.textBox2.Location = new System.Drawing.Point(290, 137);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(122, 20);
             this.textBox2.TabIndex = 13;
@@ -434,7 +434,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(339, 72);
+            this.label1.Location = new System.Drawing.Point(287, 57);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 13);
             this.label1.TabIndex = 14;
@@ -443,7 +443,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(339, 136);
+            this.label4.Location = new System.Drawing.Point(287, 121);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(112, 13);
             this.label4.TabIndex = 15;
