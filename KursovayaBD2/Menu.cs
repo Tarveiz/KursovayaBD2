@@ -68,19 +68,33 @@ namespace KursovayaBD2
                         if (reader.HasRows)
                         {
                             comboBox1.Items.Clear();
-                            comboBox2.Items.Clear();
                             while (reader.Read())
                             {
                                 int nameIndex = reader.GetOrdinal("ФИО");
                                 string name = reader.GetString(nameIndex);
 
                                 comboBox1.Items.Add(name);
-                                comboBox2.Items.Add(name);
                             }
                         }
                     }
                     break;
                 case 2:
+                    sql = $"SELECT ФИО FROM Преподаватели";
+                    cmd = new SqlCommand(sql, conn);
+
+                    using (DbDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            comboBox2.Items.Clear();
+                            while (reader.Read())
+                            {
+                                int nameIndex = reader.GetOrdinal("ФИО");
+                                string name = reader.GetString(nameIndex);
+                                comboBox2.Items.Add(name);
+                            }
+                        }
+                    }
                     break;
 
             }
@@ -102,7 +116,64 @@ namespace KursovayaBD2
 
         private void button3_Click(object sender, EventArgs e)
         {
+            string sql;
+            SqlCommand cmd;
+            if (comboBox2.SelectedItem != null && comboBox2.SelectedItem.ToString() != "")
+            {
+                int bit = 0;
+                if (Public1.Checked) bit = 1; else bit = 0;
+                sql = $"UPDATE Преподаватели SET ФИО = '{FIO1.Text}', Контактные_данные = '{Kont1.Text}', Публикации = {bit} WHERE ФИО = '{comboBox2.SelectedItem.ToString()}';";
+                cmd = new SqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+            }
 
+
+            sql = $"SELECT ФИО FROM Преподаватели";
+            cmd = new SqlCommand(sql, conn);
+            int index=0;
+            using (DbDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    index = comboBox2.SelectedIndex;
+                    comboBox2.Items.Clear();
+                    while (reader.Read())
+                    {
+                        int nameIndex = reader.GetOrdinal("ФИО");
+                        string name = reader.GetString(nameIndex);
+                        comboBox2.Items.Add(name);
+                    }
+                }
+            }
+            comboBox2.SelectedIndex = index;
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FIO1.Text = comboBox2.SelectedItem.ToString();
+
+
+            string sql = $"SELECT Контактные_данные, Публикации FROM Преподаватели WHERE ФИО = '{comboBox2.SelectedItem.ToString()}'";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            using (DbDataReader reader = cmd.ExecuteReader())
+            {
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int contIndex = reader.GetOrdinal("Контактные_данные");
+                        string cont = reader.GetString(contIndex);
+                        int pubIndex = reader.GetOrdinal("Публикации");
+                        bool pub = reader.GetBoolean(pubIndex);
+                        Kont1.Text = cont;
+                        Public1.Checked = pub;
+                    }
+
+                }
+            }
         }
     }
 }

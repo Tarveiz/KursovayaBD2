@@ -42,9 +42,17 @@
             this.button2 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Kont1 = new System.Windows.Forms.TextBox();
+            this.FIO1 = new System.Windows.Forms.TextBox();
+            this.Public1 = new System.Windows.Forms.CheckBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -57,14 +65,6 @@
             this.tabPage14 = new System.Windows.Forms.TabPage();
             this.tabPage15 = new System.Windows.Forms.TabPage();
             this.tabPage16 = new System.Windows.Forms.TabPage();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.Public1 = new System.Windows.Forms.CheckBox();
-            this.FIO1 = new System.Windows.Forms.TextBox();
-            this.Kont1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl3.SuspendLayout();
@@ -133,7 +133,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(541, 164);
+            this.button1.Location = new System.Drawing.Point(399, 185);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(144, 45);
             this.button1.TabIndex = 8;
@@ -197,7 +197,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(458, 123);
+            this.button2.Location = new System.Drawing.Point(356, 110);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(144, 45);
             this.button2.TabIndex = 9;
@@ -208,7 +208,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(149, 123);
+            this.comboBox1.Location = new System.Drawing.Point(118, 80);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 0;
@@ -228,6 +228,67 @@
             this.tabPage9.TabIndex = 2;
             this.tabPage9.Text = "Редактировать запись";
             this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(287, 121);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(112, 13);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Контактные_данные";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(287, 57);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(34, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "ФИО";
+            // 
+            // Kont1
+            // 
+            this.Kont1.Location = new System.Drawing.Point(290, 137);
+            this.Kont1.Name = "Kont1";
+            this.Kont1.Size = new System.Drawing.Size(122, 20);
+            this.Kont1.TabIndex = 13;
+            // 
+            // FIO1
+            // 
+            this.FIO1.Location = new System.Drawing.Point(290, 73);
+            this.FIO1.Name = "FIO1";
+            this.FIO1.Size = new System.Drawing.Size(122, 20);
+            this.FIO1.TabIndex = 12;
+            // 
+            // Public1
+            // 
+            this.Public1.AutoSize = true;
+            this.Public1.Location = new System.Drawing.Point(290, 197);
+            this.Public1.Name = "Public1";
+            this.Public1.Size = new System.Drawing.Size(87, 17);
+            this.Public1.TabIndex = 11;
+            this.Public1.Text = "Публикации";
+            this.Public1.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(452, 121);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(144, 45);
+            this.button3.TabIndex = 10;
+            this.button3.Text = "Изменить";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(99, 72);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(117, 21);
+            this.comboBox2.TabIndex = 0;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // tabPage2
             // 
@@ -261,6 +322,14 @@
             this.tabPage4.TabIndex = 0;
             this.tabPage4.Text = "Добавить запись";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePicker3
+            // 
+            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker3.Location = new System.Drawing.Point(116, 143);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.Size = new System.Drawing.Size(236, 20);
+            this.dateTimePicker3.TabIndex = 1;
             // 
             // tabPage5
             // 
@@ -381,79 +450,11 @@
             this.tabPage16.Text = "Редактировать запись";
             this.tabPage16.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker3
-            // 
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker3.Location = new System.Drawing.Point(116, 143);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(236, 20);
-            this.dateTimePicker3.TabIndex = 1;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(99, 72);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(117, 21);
-            this.comboBox2.TabIndex = 0;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(571, 184);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(144, 45);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Изменить";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // Public1
-            // 
-            this.Public1.AutoSize = true;
-            this.Public1.Location = new System.Drawing.Point(290, 197);
-            this.Public1.Name = "Public1";
-            this.Public1.Size = new System.Drawing.Size(87, 17);
-            this.Public1.TabIndex = 11;
-            this.Public1.Text = "Публикации";
-            this.Public1.UseVisualStyleBackColor = true;
-            // 
-            // FIO1
-            // 
-            this.FIO1.Location = new System.Drawing.Point(290, 73);
-            this.FIO1.Name = "FIO1";
-            this.FIO1.Size = new System.Drawing.Size(122, 20);
-            this.FIO1.TabIndex = 12;
-            // 
-            // Kont1
-            // 
-            this.Kont1.Location = new System.Drawing.Point(290, 137);
-            this.Kont1.Name = "Kont1";
-            this.Kont1.Size = new System.Drawing.Size(122, 20);
-            this.Kont1.TabIndex = 13;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(287, 57);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 13);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "ФИО";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(287, 121);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(112, 13);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "Контактные_данные";
-            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(687, 369);
             this.Controls.Add(this.tabControl1);
             this.Name = "Menu";
             this.Text = "Form2";
