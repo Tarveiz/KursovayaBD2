@@ -27,23 +27,6 @@ namespace KursovayaBD2
         //1-ая вкладка://
         private void button1_Click(object sender, EventArgs e)
         {
-
-            //string sql = $"SELECT Name FROM [User]";
-            //SqlCommand cmd = new SqlCommand(sql, conn);
-
-            //using (DbDataReader reader = cmd.ExecuteReader())
-            //{
-            //    if (reader.HasRows)
-            //    {
-            //        while (reader.Read())
-            //        {
-            //            int nameIndex = reader.GetOrdinal("Name");
-            //            string name = reader.GetString(nameIndex);
-
-            //            //userSelection.Items.Add(name);
-            //        }
-            //    }
-            //}
             int bit = 0;
             if (publication.Checked) bit = 1; else bit = 0;
             string sql = $"INSERT INTO " +
@@ -55,13 +38,6 @@ namespace KursovayaBD2
             Konk.Text = "";
             publication.Checked = false;
         }
-
-
-
-
-
-
-
 
 
         //2-ая вкладка://
@@ -120,8 +96,6 @@ namespace KursovayaBD2
             comboBox1.Items.RemoveAt(currentIndex);
             comboBox1.SelectedIndex = -1;
         }
-
-
 
 
         //3-ья вкладка://
@@ -189,7 +163,7 @@ namespace KursovayaBD2
 
 
         //////////////////////////////////////////////////////////////////////
-        ////////Конец первой первой вкладки -> Начало второй вкладки//////////
+        ////////////Конец первой вкладки -> Начало второй вкладки/////////////
         //////////////////////////////////////////////////////////////////////
 
         //1-ая вкладка://
@@ -338,6 +312,253 @@ namespace KursovayaBD2
 
                 }
             }
+        }
+
+
+        //////////////////////////////////////////////////////////////////////
+        //////////Конец второй вкладки -> Начало третьей вкладки//////////////
+        //////////////////////////////////////////////////////////////////////
+        
+
+        //1-ая вкладка//
+        private void button7_Click(object sender, EventArgs e)
+        {
+            string sql = $"INSERT INTO " +
+                $"Работы(Тема, Дата_публикации, Автор) " +
+                $"VALUES('{tx31Box1.Text}','{dTP3.Value}','{tx31Box2.Text}');";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.ExecuteNonQuery();
+            tx31Box1.Text = "";
+            tx31Box2.Text = "";
+            dTP3.Value = DateTime.Now;
+        }
+
+
+        //2-ая вкладка//
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            string sql = $"DELETE FROM Работы WHERE Автор = '{comBox4.SelectedItem.ToString()}';";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.ExecuteNonQuery();
+            int currentIndex = comBox4.SelectedIndex;
+            comBox4.Items.RemoveAt(currentIndex);
+            comBox4.SelectedIndex = -1;
+        }
+
+        private void tabControl4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (tabControl4.SelectedIndex)
+            {
+                case 1:
+                    string sql = $"SELECT Автор FROM Работы";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+
+                    using (DbDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            comBox4.Items.Clear();
+                            while (reader.Read())
+                            {
+                                int nameIndex = reader.GetOrdinal("Автор");
+                                string name = reader.GetString(nameIndex);
+
+                                comBox4.Items.Add(name);
+                            }
+                        }
+                    }
+                    break;
+                //+ к третьей вкладке//
+                case 2:
+                    sql = $"SELECT Автор FROM Работы";
+                    cmd = new SqlCommand(sql, conn);
+
+                    using (DbDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            comBox5.Items.Clear();
+                            while (reader.Read())
+                            {
+                                int nameIndex = reader.GetOrdinal("Автор");
+                                string name = reader.GetString(nameIndex);
+                                comBox5.Items.Add(name);
+                            }
+                        }
+                    }
+                    break;
+                    //До сюда//
+            }
+        }
+
+
+        //3-ья вкладка//
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            string sql;
+            SqlCommand cmd;
+            if (comBox5.SelectedItem != null && comBox5.SelectedItem.ToString() != "")
+            {
+                sql = $"UPDATE Работы SET Автор = '{tx33Box2.Text}', Тема = '{tx33Box1.Text}', Дата_публикации = '{dTP4.Value}'  WHERE Автор = '{comBox5.SelectedItem.ToString()}';";
+                cmd = new SqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+            }
+
+
+            sql = $"SELECT Автор FROM Работы";
+            cmd = new SqlCommand(sql, conn);
+            int index = 0;
+            using (DbDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    index = comBox5.SelectedIndex;
+                    comBox5.Items.Clear();
+                    while (reader.Read())
+                    {
+                        int nameIndex = reader.GetOrdinal("Автор");
+                        string name = reader.GetString(nameIndex);
+                        comBox5.Items.Add(name);
+                    }
+                }
+            }
+            comBox5.SelectedIndex = index;
+        }
+
+        private void comBox5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tx33Box2.Text = comBox5.SelectedItem.ToString();
+
+
+            string sql = $"SELECT Тема, Дата_публикации, Автор FROM Работы WHERE Автор = '{comBox5.SelectedItem.ToString()}'";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            using (DbDataReader reader = cmd.ExecuteReader())
+            {
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int chapterIndex = reader.GetOrdinal("Тема");
+                        string chapter = reader.GetString(chapterIndex);
+
+                        int date2Index = reader.GetOrdinal("Дата_публикации");
+                        DateTime date2 = reader.GetDateTime(date2Index);
+
+                        int authorIndex = reader.GetOrdinal("Автор");
+                        string author = reader.GetString(authorIndex);
+
+
+                        tx33Box1.Text = chapter;
+                        tx33Box2.Text = author;
+                        dTP4.Value = date2;
+                    }
+
+                }
+            }
+        }
+
+
+
+        //////////////////////////////////////////////////////////////////////
+        //////////Конец третьей вкладки -> Начало четвертой вкладки///////////
+        //////////////////////////////////////////////////////////////////////
+        
+        //1-ая вкладка//
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            string sql = $"INSERT INTO " +
+                $"Учет_Кафедра(Название_кафедры, Издатели, Номера_работ, Дата_основания, ID_Преподавателя) " +
+                $"VALUES('{tx41Box1.Text}','{cmBox1.SelectedItem}','{cmBox2.SelectedItem}', '{dTP41.Value}','{cmBox3.SelectedItem}');";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.ExecuteNonQuery();
+            tx41Box1.Text = "";
+            dTP41.Value = DateTime.Now;
+            cmBox1.SelectedIndex = -1;
+            cmBox2.SelectedIndex = -1;
+            cmBox3.SelectedIndex = -1;
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (tabControl1.SelectedIndex)
+            {
+                case 3:
+                    //Издатели
+                    string sql = $"SELECT Название_издательства FROM Издательство";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+
+                    using (DbDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            cmBox1.Items.Clear();
+                            while (reader.Read())
+                            {
+                                int nameIndex = reader.GetOrdinal("Название_издательства");
+                                string name = reader.GetString(nameIndex);
+
+                                cmBox1.Items.Add(name);
+                            }
+                        }
+                    }
+
+                    //Номера_работ
+                    sql = $"SELECT Номер_Работы FROM Работы GROUP BY Номер_Работы";
+                    cmd = new SqlCommand(sql, conn);
+
+                    using (DbDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            cmBox2.Items.Clear();
+                            while (reader.Read())
+                            {
+                                int nameIndex = reader.GetOrdinal("Номер_Работы");
+                                int name = reader.GetInt32(nameIndex);
+
+                                cmBox2.Items.Add(name);
+                            }
+                        }
+                    }
+
+                    //ID_Преподавателя
+                    sql = $"SELECT ID_Преподавателя FROM Преподаватели GROUP BY ID_Преподавателя";
+                    cmd = new SqlCommand(sql, conn);
+
+                    using (DbDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            cmBox3.Items.Clear();
+                            while (reader.Read())
+                            {
+                                int nameIndex = reader.GetOrdinal("ID_Преподавателя");
+                                int name = reader.GetInt32(nameIndex);
+
+                                cmBox3.Items.Add(name);
+                                //int[] mass;
+                                //mass.
+                            }
+                        }
+                        else
+                        {
+                            cmBox3.Items.Add("");
+                            cmBox3.SelectedIndex = -1;
+                            cmBox3.Items.Clear();
+                        }
+                    }
+                    break;
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
