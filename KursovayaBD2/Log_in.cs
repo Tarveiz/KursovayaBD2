@@ -30,9 +30,9 @@ namespace KursovayaBD2
             // Login: Tarveiz   
             // Password: 1234
 
-            //string connString = @"Data Source=" + datasource + ";Initial Catalog="
-            //+ database + ";User ID=" + username + ";Password=" + password;
-            string connString = @"Data Source=" + datasource + ";Initial Catalog=" + database + ";Integrated Security=True";
+            string connString = @"Data Source=" + datasource + ";Initial Catalog="
+            + database + ";User ID=" + username + ";Password=" + password;
+            //string connString = @"Data Source=" + datasource + ";Initial Catalog=" + database + ";Integrated Security=True";
             SqlConnection conn = new SqlConnection(connString);
 
             return conn;
@@ -59,11 +59,11 @@ namespace KursovayaBD2
                         Menu menu = new Menu(conn);
                         menu.Show();
                     }
-                    //else
-                    //{
-                    //    Form2 form2 = new Form2(conn);
-                    //    form2.Show();
-                    //}
+                    else
+                    {
+                        User user = new User(conn);
+                        user.Show();
+                    }
 
 
 
