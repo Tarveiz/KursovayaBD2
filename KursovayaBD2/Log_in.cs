@@ -32,7 +32,6 @@ namespace KursovayaBD2
 
             string connString = @"Data Source=" + datasource + ";Initial Catalog="
             + database + ";User ID=" + username + ";Password=" + password;
-            //string connString = @"Data Source=" + datasource + ";Initial Catalog=" + database + ";Integrated Security=True";
             SqlConnection conn = new SqlConnection(connString);
 
             return conn;

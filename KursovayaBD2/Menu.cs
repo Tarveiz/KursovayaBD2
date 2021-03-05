@@ -323,9 +323,7 @@ namespace KursovayaBD2
         //1-ая вкладка//
         private void button7_Click(object sender, EventArgs e)
         {
-            string sql = $"INSERT INTO " +
-                $"Работы(Тема, Дата_публикации, Автор) " +
-                $"VALUES('{tx31Box1.Text}','{dTP3.Value}','{tx31Box2.Text}');";
+            string sql = $"EXEC INSERT_Procedure1 '{tx31Box1.Text}','{dTP3.Value}','{tx31Box2.Text}'";
             SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
             tx31Box1.Text = "";
@@ -338,7 +336,7 @@ namespace KursovayaBD2
 
         private void button8_Click(object sender, EventArgs e)
         {
-            string sql = $"DELETE FROM Работы WHERE Автор = '{comBox4.SelectedItem.ToString()}';";
+            string sql = $"EXEC DELETE_Procedure2 '{comBox4.SelectedItem.ToString()}';";
             SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.ExecuteNonQuery();
             int currentIndex = comBox4.SelectedIndex;
@@ -401,7 +399,7 @@ namespace KursovayaBD2
             SqlCommand cmd;
             if (comBox5.SelectedItem != null && comBox5.SelectedItem.ToString() != "")
             {
-                sql = $"UPDATE Работы SET Автор = '{tx33Box2.Text}', Тема = '{tx33Box1.Text}', Дата_публикации = '{dTP4.Value}'  WHERE Автор = '{comBox5.SelectedItem.ToString()}';";
+                sql = $"EXEC UPDATE_Procedure3 '{tx33Box1.Text}', '{dTP4.Value}', '{tx33Box2.Text}';";
                 cmd = new SqlCommand(sql, conn);
                 cmd.ExecuteNonQuery();
             }

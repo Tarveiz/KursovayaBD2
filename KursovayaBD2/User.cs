@@ -133,5 +133,90 @@ namespace KursovayaBD2
             }
 
         }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox3.SelectedItem != null)
+            {
+                dataGridView2.Rows.Clear();
+
+                string sql = "";
+                int numColumn = 0;
+
+                switch (comboBox3.SelectedIndex)
+                {
+                    case 0:
+                        numColumn = 1;
+                        sql = "SELECT Дата_основания FROM Учет_Кафедра AS T1 WHERE Дата_основания = (SELECT Год_основания FROM Издательство AS T2 WHERE T1.Издатели = T2.Название_издательства)";
+                        break;
+                    case 1:
+                        numColumn = 1;
+                        sql = "SELECT dbo.NonColiWher(0)";
+                        break;
+                    case 2:
+                        numColumn = 1;
+                        sql = "SELECT Номера_работ FROM (SELECT Учет_Кафедра.Номера_работ, Работы.Тема, Работы.Номер_Работы, Учет_Кафедра.ID_Преподавателя FROM Учет_Кафедра, Работы WHERE ID_Преподавателя = Номер_Работы) AS R1, Преподаватели AS R2 WHERE R1.ID_Преподавателя = R2.ID_Преподавателя";
+                        break;
+                    case 3:
+                        numColumn = 4;
+                        sql = "SELECT * FROM Издательство WHERE Название_издательства = '1C'";
+                        break;
+                    case 4:
+                        numColumn = 2;
+                        sql = "SELECT Название_издательства,(SELECT Издатели FROM Учет_Кафедра WHERE Z.Название_издательства = Издатели) AS A FROM Издательство AS Z";
+                        break;
+                    case 5:
+                        numColumn = 1;
+                        sql = "SELECT Издатели FROM Учет_Кафедра WHERE ID_Преподавателя = '2'";
+                        break;
+                    case 6:
+                        numColumn = 2;
+                        sql = "DECLARE @J NVARCHAR(30);SET @J = 100;SELECT DISTINCT COUNT(ID_Преподавателя), AVG(Номер_Работы) FROM Учет_Кафедра, Работы WHERE Номер_Работы > 0 GROUP BY ID_Преподавателя, Номер_Работы HAVING Номер_Работы < @J";
+                        break;
+                }
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                richTextBox1.Text = sql;
+
+                using (DbDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        List<string[]> data = new List<string[]>();
+
+                        while (reader.Read())
+                        {
+                            data.Add(new string[numColumn]);
+
+                            for (int i = 0; i < numColumn; i += 1)
+                            {
+                                data[data.Count - 1][i] = reader[i].ToString();
+                            }
+                        }
+
+                        foreach (string[] s in data)
+                        {
+                            dataGridView2.Rows.Add(s);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (tabControl1.SelectedIndex)
+            {
+                case 1:
+                    comboBox3.Items.Add("Коррелированный WHERE");
+                    comboBox3.Items.Add("Не коррелированный WHERE");
+                    comboBox3.Items.Add("Коррелированный FROM");
+                    comboBox3.Items.Add("Не коррелированный FROM");
+                    comboBox3.Items.Add("Коррелированный SELECT");
+                    comboBox3.Items.Add("Не коррелированный SELECT");
+                    comboBox3.Items.Add("Выборка с HAVING");
+                    break;
+            }
+        }
     }
 }
